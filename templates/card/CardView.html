@@ -195,7 +195,7 @@
                         <h2 class="misc-header-title">Legality</h2>
                     </div>
                     <div class="misc-info-content single-info">
-                        {% for key, value in card.legalities.items %}
+                        {% for key, value in card.legalities.items reversed %}
                         <span>{{key}} | {% if value %}<i class="fa-solid fa-check green-check"></i> {% else %} <i class="fa-solid fa-x red-x"></i> {% endif %} </span>
                         {% endfor %}
                     </div>

@@ -1,8 +1,14 @@
+:root{
+    --background:rgb(66, 68, 82);
+    --forground: rgb(43, 46, 71);
+}
+
 * {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+
 
 body, html{
     margin:0;
@@ -10,7 +16,7 @@ body, html{
 }
 
 body{
-    background-color: rgb(25, 26, 36);
+    background-color: var(--background);
     display: flex;
     flex-direction: column;
 }
@@ -21,7 +27,7 @@ html{
 
 .navbar{
     color: white;
-    background-color: rgb(42, 44, 59);
+    background-color: var(--forground);
     display: block;
 }
 
@@ -50,13 +56,12 @@ html{
 }
 
 #navbar-icon{
-    width: 40px;
+    width: 45px;
+    display: block;
 }
 
 .brand-icon{
-    margin: auto;
-    display: block;
-    width: 100%;
+    height: 100%;
 }
 
 #expand{
@@ -84,7 +89,7 @@ html{
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: rgb(42, 44, 59);
+    background-color: var(--forground);
     display: none;
 }
 
@@ -206,8 +211,8 @@ html{
 
 footer{
     width: 100%;
-    background-color: rgb(42, 44, 59);
-    position: relative;
+    background-color: var(--forground);
+    position: absolute;
     bottom: 0;
     text-align: justify;
     vertical-align: bottom;
@@ -287,7 +292,7 @@ footer{
     min-height: 32px;
     height: auto;
     margin: auto;
-    background-color: rgb(42, 44, 59);
+    background-color: var(--forground);
     border-radius: 12px;
     display: flex;
     justify-content: center;
