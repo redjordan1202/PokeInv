@@ -164,10 +164,13 @@ def parseCardInfo(card):
     }
     new_card.sets = cardSet
 
-    subtypes = {}
-    for count, subtype in enumerate(card.subtypes):
-        subtypes["subtype%i" % count] = subtype
-    new_card.subtypes = subtypes
+    if card.subtypes:
+        subtypes = {}
+        for count, subtype in enumerate(card.subtypes):
+            subtypes["subtype%i" % count] = subtype
+        new_card.subtypes = subtypes
+    else:
+        new_card.subtypes = None
 
     new_card.supertype = card.supertype
     
