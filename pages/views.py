@@ -11,6 +11,6 @@ def Results(request):
     context = {}
     if request.GET['search'] != '':
         query = 'name:\"%s\"' % request.GET['search']
-        cards = Card.where(q=query)
+        cards = Card.where(q=query, orderBy='+set.releaseDate')
         context = {'cards' : cards}
     return render(request, 'pages/results.html', context)
