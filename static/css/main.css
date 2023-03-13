@@ -29,6 +29,7 @@ html{
     color: white;
     background-color: var(--forground);
     display: block;
+    border-radius: 0px 0px 12px 12px;
 }
 
 .navbar-brand{
