@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Pokemon TCG Inventory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% load static %}
+    <link rel="stylesheet" type='text/css' href="{% static 'css\main.css' %}">
+</head>
+
+
+<body>
+
+    <div class="container">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <div class="navbar-item" id="navbar-icon">
+                    <a href="{% url 'pages:index' %}" class="nav-link">
+                        <img src="{% static 'imgs\800px-Poké_Ball_icon.svg.png' %}" class="brand-icon">
+                    </a>
+                </div>
+                <div class="navbar-item" id="navbar-title">
+                    <a href="{% url 'pages:index' %}" class="nav-link">
+                        <h3 class="brand-text">TCG Inventory</h3>
+                    </a>
+                </div>
+                <div class="navbar-item collapse">
+                    <a href="#" class="nav-link">Sets</a>
+                </div>
+                <div class="navbar-item collapse">
+                    <a href="#" class="nav-link">About</a>
+                </div>
+                <div class="navbar-item collapse" id="search-nav">
+                    <form  action="{% url 'pages:results' %}" method="get">
+                        <input type="text" placeholder="Search..." name="search">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+                <div class="navbar-item" id="expand">
+                    <button class="expand-button" onclick="expandNav()"><i class="fa-solid fa-bars" id="expand-button-icon"></i></button>
+                </div>
+                
+            </div>
+            <div class="navbar-expand" id="navbar-expand">
+                <div class="expand-item" id="search-expand">
+                    <form action="{% url 'pages:results' %}" method="get">
+                        <input type="text" placeholder="Search..." name="search">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+                <div class="expand-item">
+                    <a href="#" class="nav-link">Sets</a>
+                </div>
+                <div class="expand-item">
+                    <a href="#" class="nav-link">About</a>
+                </div>
+                <div class="expand-item">
+                    <a href="#" class="nav-link"><i class="fa-solid fa-user"></i></i></i></a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    <!--  <footer>
+            <span class="api-footer">All Information provided by <a href="https://pokemontcg.io/"> Pokemon TCG API</a></span>
+            <span class="created-footer">Pokemon TCG Inventory by Jordan Del Pilar</span>
+        </footer> -->
+
+    </div>
+    
+
+    <script>
+        function expandNav() {
+            const expand = document.getElementById("navbar-expand")
+            const icon = document.getElementById("expand-button-icon")
+            if(expand.classList.contains("expanded")) {
+                expand.classList.remove("expanded")
+                icon.classList.remove("fa-xmark")
+                icon.classList.add("fa-bars")
+            }
+            else {
+                expand.classList.add("expanded")
+                icon.classList.remove("fa-bars")
+                icon.classList.add("fa-xmark")
+            }
+        }
+    </script>
+
+    <script src="https://kit.fontawesome.com/da38f2ab5d.js" crossorigin="anonymous"></script>
+</body>
+
