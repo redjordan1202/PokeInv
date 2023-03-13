@@ -2,7 +2,6 @@
 {% block content %}
 {% csrf_token %}
 
-
         <div class="search-results">
             {% for card in cards reversed %}
             <div class="result">
@@ -13,12 +12,8 @@
             {% endfor %}
         </div>
 
-
-
-
-
-
-
-
+        <script>
+            document.title = "Search: {{search}} | Pokemon TCG Inventory"
+        </script>
 
 {% endblock %}
