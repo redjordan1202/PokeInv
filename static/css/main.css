@@ -9,7 +9,6 @@
     box-sizing: border-box;
 }
 
-
 body, html{
     margin:0;
     padding:0;
@@ -176,8 +175,6 @@ html{
     display: none;
 }
 
-
-
 .container{
     width: 100%;
     min-height: 100vh;
@@ -315,7 +312,7 @@ footer{
 
 .card-header{
     color: white;
-    width: 85%;
+    width: 95%;
     min-height: 32px;
     height: auto;
     margin: auto;
@@ -472,6 +469,7 @@ footer{
 .info-text{
     text-align: start;
     padding: 5px 10px;
+    margin: 0;
 }
 
 .misc-info-block{
@@ -603,6 +601,10 @@ footer{
     .rule{
         padding: 0px 30px;
     }
+
+    .card-name{
+        font-size: 2em;
+    }
 }
 
 @media screen and (min-width: 1025px){
@@ -621,6 +623,11 @@ footer{
         border-radius: 12px;
         padding: 5px 0px;
         font-size: .75em;
+    }
+
+    .card-image{
+        height: 85vh;
+        width: auto;
     }
 
     .attack{
@@ -660,5 +667,53 @@ footer{
 @media screen and (min-width: 1201px){
     .search-results{
         grid-template-columns: auto auto auto auto auto;
+    }
+
+    .card-container{
+        grid-template-columns: 650px auto;
+    }
+
+    .card-info{
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width: 1400px){
+    .card-container{
+        grid-template-columns: 650px auto;
+        font-size: 1.75em;
+    }
+
+    .card-header-lg{
+        margin-top: 15px;
+    }
+
+    .card-catagories-lg{
+        margin-top: 15px;
+    }
+
+    .misc-energy{
+        height: 40px;
+    }
+
+    .retreat-energy{
+        height: 30px;
+    }
+
+    .attack-energy{
+        height: 40px;
+    }
+
+    .card-type{
+        height: 45px;
+    }
+
+    .type-icon{
+        height: 100%;
+    }
+
+    .attack-cost{
+        height: 40px;
+        margin-top: 5px;
     }
 }
