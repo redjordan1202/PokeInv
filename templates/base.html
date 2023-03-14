@@ -23,28 +23,33 @@
                         <h3 class="brand-text">TCG Inventory</h3>
                     </a>
                 </div>
-                <div class="navbar-item collapse">
+                <div class="navbar-item collapse-md">
                     <a href="#" class="nav-link">Sets</a>
                 </div>
-                <div class="navbar-item collapse">
+                <div class="navbar-item collapse-md">
                     <a href="#" class="nav-link">About</a>
-                </div>
-                <div class="navbar-item collapse" id="search-nav">
-                    <form  action="{% url 'pages:results' %}" method="get">
-                        <input type="text" placeholder="Search..." name="search">
-                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
                 </div>
                 <div class="navbar-item" id="expand">
                     <button class="expand-button" onclick="expandNav()"><i class="fa-solid fa-bars" id="expand-button-icon"></i></button>
                 </div>
+                <div class="navbar-item collapse-md" id="sign-in">
+                    <a href="#" class="nav-link"><i class="fa-solid fa-user"></i></i></i></a>
+                </div>
+                <div class="navbar-item collapse-sm" id="search-nav">
+                    <form  action="{% url 'pages:results' %}" method="get">
+                        <input type="text" placeholder="Search..." name="search">
+                    </form>
+                </div>
+                
+                
+                
+                
                 
             </div>
             <div class="navbar-expand" id="navbar-expand">
                 <div class="expand-item" id="search-expand">
                     <form action="{% url 'pages:results' %}" method="get">
                         <input type="text" placeholder="Search..." name="search">
-                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </div>
                 <div class="expand-item">

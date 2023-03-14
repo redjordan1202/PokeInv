@@ -3,207 +3,240 @@
 {% csrf_token %}
 {% load static %}
 
-<div class="card-header">
-    <div class="card-title">
-        <h2 class="card-name" {% if card.supertype != "Pokémon" %} style="float: none !important;" {% endif %}>{{card.name}}</h2>
-    </div>
-    {% if card.supertype == "Pokémon" %}
-    <div class="card-type">
-        {% if card.types.type1 %}    
-        <img src="{% static 'imgs/'|add:card.types.type1|add:'.png' %}" class="type-icon">
-        {% endif %}
-        {% if card.types.type2 %}    
-        <img src="{% static 'imgs/'|add:card.types.type2|add:'.png' %}" class="type-icon">
-        {% endif %}
-    </div>
-    {% endif %}
-</div>
-
-<div class="card-image">
-    <img src="{{card.images.large}}" class="view-image">
-</div>
-
-<hr class="separator">
-
-<div class="card-catagories">
-    <span class="supertype">{{card.supertype}}</span>
-    {% for key, type in card.subtypes.items %}
-    <span> - {{type}}</span>
-    {% endfor %}
-    {% if card.supertype == "Pokémon" %}
-    <div class="hp-evo-info">
-        <span class="hp">HP {{card.hp}}</span>
-        {% if card.evolvesFrom %}
-        <span class="evo"> | Evolves From {{card.evolvesFrom}}</span>
-        {% endif %}
-    </div>
-    {% endif %}
-</div>
-
-<hr class="separator">
-
-<div class="card-info">
-
-    {% if card.attacks.attack1 %}
-    <div class="info-section">
-        <div class="section-header">
-            <h2 class="section-title">Attacks</h2>
-        </div>
-        {% for key, attack in card.attacks.items %}
-        {% if attack %}
-        <div class="attack">
-            <div class="attack-details-header">
-                <div class="attack-name">
-                    <h3 class="attack-name-text">{{attack.name}} {% if attack.damage %} |  {{attack.damage}} {% endif %}</h3>
-                </div>
-                <div class="attack-cost">
-                    {% for energy in attack.cost %}
-                    <img src="{% static 'imgs/'|add:energy|add:'.png' %}" class="attack-energy">
-                    {% endfor %}
-                </div>
+<div class="card-container">
+    <div class="header">
+        <div class="card-header">
+            <div class="card-title">
+                <h2 class="card-name" {% if card.supertype != "Pokémon" %} style="float: none !important;" {% endif %}>{{card.name}}</h2>
             </div>
-            <div class="info-text-container">
-                <p class="info-text">{{attack.text}}</p>
+            {% if card.supertype == "Pokémon" %}
+            <div class="card-type">
+                {% if card.types.type1 %}    
+                <img src="{% static 'imgs/'|add:card.types.type1|add:'.png' %}" class="type-icon">
+                {% endif %}
+                {% if card.types.type2 %}    
+                <img src="{% static 'imgs/'|add:card.types.type2|add:'.png' %}" class="type-icon">
+                {% endif %}
             </div>
+            {% endif %}
         </div>
-        {% endif %}
-        {% endfor %}
-    </div>
-    <hr class="separator">
-    {% endif %}
 
-    
-
-    {% if card.rules %}
-    <div class="info-section">
-        <div class="section-header">
-            <h2 class="section-title">Rules</h2>
+        <div class="card-image">
+            <img src="{{card.images.large}}" class="view-image">
         </div>
-        {% for key, rule in card.rules.items %}
-        {% if rule %}
-        <div class="info-text-container">
-            <p class="info-text">{{rule}}</p>
-        </div>
-        {% endif %}
-        {% endfor %}
-    </div>
-    <hr class="separator">
-    {% endif %}
 
-    <div class="info-section">
-            <div class="misc-info-block">
-                <div class="misc-info">
-                    <div class="misc-info-header">
-                        <h2 class="misc-header-title">Weakness</h2>
-                    </div>
-                    <div class="misc-info-content">
-                        {% if card.weaknesses %}
-                        <img src="{% static 'imgs/'|add:card.weaknesses.type|add:'.png' %}" class="misc-energy">
-                        <span>{{card.weaknesses.value}}</span>
-                        {% else %}
-                        <span>None</span>
-                        {% endif %}
-                    </div>
-                </div>
+        <hr class="separator md">
 
-                <div class="misc-info">
-                    <div class="misc-info-header">
-                        <h2 class="misc-header-title">Resistance</h2>
-                    </div>
-                    <div class="misc-info-content">
-                        {% if card.resistances %}
-                        <img src="{% static 'imgs/'|add:card.resistances.type|add:'.png' %}" class="misc-energy">
-                        <span>{{card.resistances.value}}</span>
-                        {% else %}
-                        <span>None</span>
-                        {% endif %}
-                    </div>
-                </div>
+        <div class="card-catagories">
+            <span class="supertype">{{card.supertype}}</span>
+            {% for key, type in card.subtypes.items %}
+            <span> - {{type}}</span>
+            {% endfor %}
+            {% if card.supertype == "Pokémon" %}
+            <div class="hp-evo-info">
+                <span class="hp">HP {{card.hp}}</span>
+                {% if card.evolvesFrom %}
+                <span class="evo"> | Evolves From {{card.evolvesFrom}}</span>
+                {% endif %}
             </div>
-
+            {% endif %}
             <hr class="separator">
+        </div>
+        
+    </div>
 
-            <div class="misc-info-block">
-                <div class="misc-info">
-                    <div class="misc-info-header">
-                        <h2 class="misc-header-title">Retreat</h2>
+
+    <div class="card-info">
+        <div class="card-header-lg">
+            <div class="card-title">
+                <h2 class="card-name" {% if card.supertype != "Pokémon" %} style="float: none !important;" {% endif %}>{{card.name}}</h2>
+            </div>
+            {% if card.supertype == "Pokémon" %}
+            <div class="card-type">
+                {% if card.types.type1 %}    
+                <img src="{% static 'imgs/'|add:card.types.type1|add:'.png' %}" class="type-icon">
+                {% endif %}
+                {% if card.types.type2 %}    
+                <img src="{% static 'imgs/'|add:card.types.type2|add:'.png' %}" class="type-icon">
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="card-catagories-lg">
+            <span class="supertype">{{card.supertype}}</span>
+            {% for key, type in card.subtypes.items %}
+            <span> - {{type}}</span>
+            {% endfor %}
+            {% if card.supertype == "Pokémon" %}
+            <div class="hp-evo-info">
+                <span class="hp">HP {{card.hp}}</span>
+                {% if card.evolvesFrom %}
+                <span class="evo"> | Evolves From {{card.evolvesFrom}}</span>
+                {% endif %}
+            </div>
+            {% endif %}
+            <hr class="separator">
+        </div>
+        
+
+
+        {% if card.attacks.attack1 %}
+        <div class="info-section">
+            <div class="section-header">
+                <h2 class="section-title">Attacks</h2>
+            </div>
+            {% for key, attack in card.attacks.items %}
+            {% if attack %}
+            <div class="attack">
+                <div class="attack-details-header">
+                    <div class="attack-name">
+                        <h3 class="attack-name-text">{{attack.name}} {% if attack.damage %} |  {{attack.damage}} {% endif %}</h3>
                     </div>
-                    <div class="misc-info-content">
+                    <div class="attack-cost">
+                        {% for energy in attack.cost %}
+                        <img src="{% static 'imgs/'|add:energy|add:'.png' %}" class="attack-energy">
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="info-text-container">
+                    <p class="info-text">{{attack.text}}</p>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <hr class="separator">
+        {% endif %}
+
+        {% if card.rules %}
+        <div class="info-section">
+            <div class="section-header">
+                <h2 class="section-title">Rules</h2>
+            </div>
+            {% for key, rule in card.rules.items %}
+            {% if rule %}
+            <div class="info-text-container rule">
+                <p class="info-text">{{rule}}</p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <hr class="separator">
+        {% endif %}
+
+        <div class="info-section">
+                <div class="misc-info-block">
+                    <div class="misc-info">
+                        <div class="misc-info-header">
+                            <h2 class="misc-header-title">Weakness</h2>
+                        </div>
+                        <div class="misc-info-content single-info">
+                            {% if card.weaknesses %}
+                            <span><img src="{% static 'imgs/'|add:card.weaknesses.type|add:'.png' %}" class="misc-energy">      {{card.weaknesses.value}}</span>
+                            {% else %}
+                            <span>None</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="misc-info">
+                        <div class="misc-info-header">
+                            <h2 class="misc-header-title single-info">Resistance</h2>
+                        </div>
+                        <div class="misc-info-content single-info">
+                            {% if card.resistances %}
+                            <span><img src="{% static 'imgs/'|add:card.resistances.type|add:'.png' %}" class="misc-energy">     {{card.resistances.value}}</span>
+                            {% else %}
+                            <span>None</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="separator">
+
+                <div class="misc-info-block">
+                    <div class="misc-info">
+                        <div class="misc-info-header">
+                            <h2 class="misc-header-title">Retreat</h2>
+                        </div>
                         {% if card.retreatCost.type1 %}
-                        {% for key, type in card.retreatCost.items %}
-                        {% if type %}
-                        <img src="{% static 'imgs/'|add:type|add:'.png' %}" class="retreat-energy">
-                        {% endif %}
-                        {% endfor %}
+                        <div class="misc-info-content retreat-cost">
+                            {% for key, type in card.retreatCost.items %}
+                            {% if type %}
+                            <img src="{% static 'imgs/'|add:type|add:'.png' %}" class="retreat-energy">
+                            {% endif %}
+                            {% endfor %}
+                        </div>
                         {% else %}
-                        <span>None</span>
+                        <div class="misc-info-content single-info">
+                            <span>None</span>
+                        </div>
                         {% endif %}
+                        
+                    </div>
+
+                    <div class="misc-info">
+                        <div class="misc-info-header">
+                            <h2 class="misc-header-title">Artist</h2>
+                        </div>
+                        <div class="misc-info-content single-info">
+                            <span>{{card.artist}}</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="misc-info">
-                    <div class="misc-info-header">
-                        <h2 class="misc-header-title">Artist</h2>
-                    </div>
-                    <div class="misc-info-content single-info">
-                        <span>{{card.artist}}</span>
-                    </div>
-                </div>
-            </div>
+                <hr class="separator">
 
-            <hr class="separator">
-
-            <div class="misc-info-block">
-                <div class="misc-info">
-                    <div class="misc-info-header">
-                        <h2 class="misc-header-title">Rarity</h2>
+                <div class="misc-info-block">
+                    <div class="misc-info">
+                        <div class="misc-info-header">
+                            <h2 class="misc-header-title">Rarity</h2>
+                        </div>
+                        <div class="misc-info-content single-info">
+                            <span>{{card.rarity}}</span>
+                        </div>
                     </div>
-                    <div class="misc-info-content single-info">
-                        <span>{{card.rarity}}</span>
-                    </div>
-                </div>
-                
-                <div class="misc-info">
-                    <div class="misc-info-header">
-                        <h2 class="misc-header-title">Set</h2>
-                    </div>
-                    <div class="misc-info-content">
-                        {% if card.sets %}
-                        <img src="{{card.sets.symbol}}" class="misc-energy">
-                        <span>{{card.sets.name}}</span>
-                        {% else %}
-                        <span>None</span>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-
-            <hr class="separator">
-
-            <div class="misc-info-block">
-                <div class="misc-info">
-                    <div class="misc-info-header">
-                        <h2 class="misc-header-title">Number</h2>
-                    </div>
-                    <div class="misc-info-content single-info">
-                        <span>{{card.number}}</span>
+                    
+                    <div class="misc-info">
+                        <div class="misc-info-header">
+                            <h2 class="misc-header-title">Set</h2>
+                        </div>
+                        <div class="misc-info-content single-info">
+                            {% if card.sets %}
+                            <span><img src="{{card.sets.symbol}}" class="misc-energy">      {{card.sets.name}}</span>
+                            {% else %}
+                            <span>None</span>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
 
-                <div class="misc-info">
-                    <div class="misc-info-header">
-                        <h2 class="misc-header-title">Legality</h2>
+                <hr class="separator">
+
+                <div class="misc-info-block">
+                    <div class="misc-info">
+                        <div class="misc-info-header">
+                            <h2 class="misc-header-title">Number</h2>
+                        </div>
+                        <div class="misc-info-content single-info">
+                            <span>{{card.number}}</span>
+                        </div>
                     </div>
-                    <div class="misc-info-content single-info">
-                        {% for key, value in card.legalities.items reversed %}
-                        <span>{{key}} | {% if value %}<i class="fa-solid fa-check green-check"></i> {% else %} <i class="fa-solid fa-x red-x"></i> {% endif %} </span>
-                        {% endfor %}
+
+                    <div class="misc-info">
+                        <div class="misc-info-header">
+                            <h2 class="misc-header-title">Legality</h2>
+                        </div>
+                        <div class="misc-info-content single-info">
+                            {% for key, value in card.legalities.items reversed %}
+                            <span>{{key}} | {% if value %}<i class="fa-solid fa-check green-check"></i> {% else %} <i class="fa-solid fa-x red-x"></i> {% endif %} </span>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            
-
+        </div>
     </div>
 </div>
 

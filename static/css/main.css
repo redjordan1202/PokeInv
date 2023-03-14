@@ -1,6 +1,6 @@
 :root{
     --background:rgb(66, 68, 82);
-    --forground: rgb(43, 46, 71);
+    --foreground: rgb(43, 46, 71);
 }
 
 * {
@@ -27,7 +27,7 @@ html{
 
 .navbar{
     color: white;
-    background-color: var(--forground);
+    background-color: var(--foreground);
     display: block;
     border-radius: 0px 0px 12px 12px;
 }
@@ -38,7 +38,7 @@ html{
 
 .navbar-item{
     height: 40px;
-    margin: 0;
+    margin: 0px 5px;
     overflow: hidden;
     float: left;
     text-align: center;
@@ -70,12 +70,40 @@ html{
     height: 100%;
 }
 
+#sign-in{
+    float: right;
+}
+
 #search-nav{
     float: right;
 }
 
+#search-nav input{
+    background-color: rgb(21, 22, 30);
+    color: white;
+    border-radius: 12px;
+    border-color: rgb(91, 94, 110);
+    border-width: 1px;
+    height: 1em;
+    width: 200px;
+    height: 22px;
+    padding: 0px 5px;
+}
+
+#search-nav button{
+    background-color: rgb(21, 22, 30);
+    color: white;
+    border-radius: 12px;
+    border-color: rgb(91, 94, 110);
+    border-width: 1px;
+    height: 26px;
+    width: 26px;
+    text-align: center;
+    vertical-align: middle;
+}
+
 #navbar-title{
-    font-size: 0.75rem;
+    font-size: 1rem;
     text-align: center;
     line-height: 40px;
     padding-left: 0px;
@@ -90,7 +118,7 @@ html{
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: var(--forground);
+    background-color: var(--foreground);
     display: none;
 }
 
@@ -126,22 +154,9 @@ html{
     border-color: rgb(91, 94, 110);
     border-width: 1px;
     height: 1em;
-    width: 250px;
+    width: 100vw;
     height: 22px;
     padding: 0px 5px;
-}
-
-#search-expand button{
-    background-color: rgb(21, 22, 30);
-    color: white;
-    border-radius: 12px;
-    border-color: rgb(91, 94, 110);
-    border-width: 1px;
-    height: 26px;
-    width: 26px;
-    text-align: center;
-    vertical-align: middle;
-    margin-left: 5px;
 }
 
 #search-expand button:hover{
@@ -152,6 +167,16 @@ html{
 .collapse{
     display: none;
 }
+
+.collapse-sm{
+    display: none;
+}
+
+.collapse-md{
+    display: none;
+}
+
+
 
 .container{
     width: 100%;
@@ -212,7 +237,7 @@ html{
 
 footer{
     width: 100%;
-    background-color: var(--forground);
+    background-color: var(--foreground);
     position: absolute;
     bottom: 0;
     text-align: justify;
@@ -266,6 +291,7 @@ footer{
 .result{
     margin: 0;
     padding: 10px;
+    border-radius: 12px;
 }
 
 .result:hover{
@@ -293,9 +319,22 @@ footer{
     min-height: 32px;
     height: auto;
     margin: auto;
-    background-color: var(--forground);
+    background-color: var(--foreground);
     border-radius: 12px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-header-lg{
+    color: white;
+    width: 85%;
+    min-height: 32px;
+    height: auto;
+    margin: auto;
+    background-color: var(--foreground);
+    border-radius: 12px;
+    display: none;
     justify-content: center;
     align-items: center;
 }
@@ -344,11 +383,12 @@ footer{
     justify-content: center;
     align-items: center;
     height: 350px;
+    border-radius: 12px;
 }
 
 .separator{
     width: 85%;
-    height: 1px;
+    height: 2px;
     border: none;
     color: white;
     background-color: white; 
@@ -356,9 +396,16 @@ footer{
     margin-top: 10px;
 }
 
+.lg{
+    display: none;
+}
 .card-catagories{
     color: white;
     margin-top: 10px;
+}
+
+.card-catagories-lg{
+    display: none;
 }
 
 .supertype{
@@ -397,7 +444,6 @@ footer{
 .attack-name{
     width: 100%;
     height: 32px;
-    
 }
 
 .attack-name-text{
@@ -436,22 +482,26 @@ footer{
 }
 
 .misc-info{
-    border-radius: 12px;
     padding: 5px;
+    width: 125px;
+    margin: 0px auto;
 }
 
 .misc-info-content{
     width: 100%;
     display: grid;
     grid-template-columns: auto auto;
-    padding: 0px 30px;
     grid-gap: 2px;
     row-gap: 5px;
 }
 
+.card-container{
+    width: 100%;
+}
+
 .misc-info-content span{
-    line-height: 40px;
     font-size: .75rem;
+    width: 100%;
 }
 
 .misc-energy{
@@ -480,10 +530,135 @@ footer{
     grid-template-columns: auto !important;
 }
 
+.retreat-cost{
+    grid-template-columns: auto auto auto auto !important;
+    column-gap: 5px;
+    width: 100%;
+}
+
 .green-check{
     color: green;
 }
 
 .red-x{
     color: red;
+}
+
+@media screen and (min-width: 480px) {
+    .collapse-sm{
+        display: block;
+    }
+
+    #search-expand{
+        display: none;
+    }
+
+    .content{
+        padding: 0px 20px;
+    }
+
+    .misc-info{
+        width: 220px;
+    }
+
+    .retreat-cost{
+        width: 50%;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 550px){
+    .misc-info-content span{
+        font-size: 1.5em;
+    }
+
+    .retreat-cost{
+        width: 100%;
+        margin: 0;
+    }
+}
+
+@media screen and (min-width: 769px){
+    .collapse-md{
+        display: block;
+    }
+
+    #expand{
+        display: none;
+    }
+
+    .search-results{
+        grid-template-columns: auto auto auto;
+    }
+    
+    .content{
+        padding: 0px 35px;
+        margin-top: 10px;
+    }
+
+    .attack{
+        padding: 0px 30px;
+    }
+
+    .rule{
+        padding: 0px 30px;
+    }
+}
+
+@media screen and (min-width: 1025px){
+    .search-results{
+        grid-template-columns: auto auto auto auto;
+    }
+
+    .card-container{
+        display: grid;
+        grid-template-columns: 500px auto;
+        column-gap: 5px;
+    }
+
+    .card-info{
+        background-color: var(--foreground);
+        border-radius: 12px;
+        padding: 5px 0px;
+        font-size: .75em;
+    }
+
+    .attack{
+        margin: 0;
+    }
+
+    .attack-name{
+        height: auto;
+    }
+
+    .card-header{
+        display: none;
+    }
+
+    .card-header-lg{
+        display: flex;
+    }
+
+    .card-catagories{
+        display: none;
+    }
+
+    .card-catagories-lg{
+        display: block;
+    }
+
+    .lg{
+        display: block;
+    }
+
+    .md{
+        display: none;
+    }
+    
+}
+
+@media screen and (min-width: 1201px){
+    .search-results{
+        grid-template-columns: auto auto auto auto auto;
+    }
 }
