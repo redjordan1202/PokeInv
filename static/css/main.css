@@ -1,6 +1,20 @@
 :root{
     --background:rgb(66, 68, 82);
     --foreground: rgb(43, 46, 71);
+    --foreground-hover: rgb(86, 93, 160);
+}
+
+::placeholder{
+    color: white;
+    opacity: 1;
+}
+
+:-ms-input-placeholder{
+    color: white;
+}
+
+::-ms-input-placeholder{
+    color: white;
 }
 
 * {
@@ -43,21 +57,32 @@ html{
     text-align: center;
     line-height: 40px;
     vertical-align: middle;
-    padding: 0px 5px;
+    padding: 0px 10px;
+    border-radius: 12px;
+}
+
+.navbar-item:hover{
+    background-color: var(--foreground-hover);
 }
 
 .nav-link{
     text-decoration: none;
     color: inherit;
+    height: 100%;
+    width: 100%;
 }
 
-.nav-link:hover{
-    color: rgb(187, 134, 252);
-}
 
 #navbar-icon{
-    width: 45px;
-    display: block;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+#navbar-icon:hover{
+    background-color: transparent;
 }
 
 .brand-icon{
@@ -77,16 +102,20 @@ html{
     float: right;
 }
 
+#search-nav:hover{
+    background-color: transparent;
+}
+
 #search-nav input{
     background-color: rgb(21, 22, 30);
     color: white;
-    border-radius: 12px;
+    border-radius: 25px;
     border-color: rgb(91, 94, 110);
     border-width: 1px;
     height: 1em;
     width: 200px;
     height: 22px;
-    padding: 0px 5px;
+    padding: 0px 15px;
 }
 
 #search-nav button{
@@ -105,7 +134,6 @@ html{
     font-size: 1rem;
     text-align: center;
     line-height: 40px;
-    padding-left: 0px;
 }
 
 .brand-text{
@@ -192,7 +220,9 @@ html{
 
 #main-search{
     width: 100%;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
 }
 
 #main-search input{
@@ -202,7 +232,7 @@ html{
     border-radius: 12px;
     border-color: rgb(91, 94, 110);
     border-width: 1px;
-    padding-left: 10px;
+    padding: 0px 20px;
     height: 22px;
 }
 
@@ -367,9 +397,9 @@ footer{
 }
 
 .view-image{
-    height: 100%;
+    width: 90%;
     background-size: cover;
-    margin: 0;
+    margin: auto;
 }
 
 .card-image{
@@ -379,7 +409,6 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 350px;
     border-radius: 12px;
 }
 
@@ -457,6 +486,32 @@ footer{
     align-items: center;
 }
 
+.abilities-wrapper{
+    display: grid;
+    grid-template-columns: auto;  
+    margin: 0;  
+    padding: 0;
+}
+
+.ability-header{
+    padding: 5px 10px;
+}
+
+.ability-name{
+    text-align: start;
+    padding: 0 10px;
+    margin: 0;
+    font-size: 1.25em;
+}
+
+.ancient-trait-name{
+    text-align: start;
+    padding: 0 10px;
+    margin: 0;
+    font-size: 1.25em;
+}
+
+
 .attack-energy{
     height: 100%;
     padding: 5px;
@@ -464,6 +519,7 @@ footer{
 
 .info-text-container{
     width: 100%;
+    padding: 0px 30px;
 }
 
 .info-text{
@@ -563,6 +619,7 @@ footer{
         width: 50%;
         margin: auto;
     }
+
 }
 
 @media screen and (min-width: 550px){
@@ -598,8 +655,8 @@ footer{
         padding: 0px 30px;
     }
 
-    .rule{
-        padding: 0px 30px;
+    .card-info{
+        font-size: 1em;
     }
 
     .card-name{
@@ -621,14 +678,10 @@ footer{
     .card-info{
         background-color: var(--foreground);
         border-radius: 12px;
-        padding: 5px 0px;
-        font-size: .75em;
+        padding: 10px 20px;
     }
 
-    .card-image{
-        height: 85vh;
-        width: auto;
-    }
+    
 
     .attack{
         margin: 0;
@@ -661,6 +714,23 @@ footer{
     .md{
         display: none;
     }
+
+    #main-search input{
+        font-size: 2em;
+        height: 50px;
+        border-radius: 25px;
+    }
+
+    #main-search button{
+        height: 48px;
+        width: 48px;
+        border-radius: 25px;
+        font-size: 1.75em;
+    }
+
+    .description{
+        font-size: 2em;
+    }
     
 }
 
@@ -669,12 +739,10 @@ footer{
         grid-template-columns: auto auto auto auto auto;
     }
 
-    .card-container{
-        grid-template-columns: 650px auto;
-    }
+    
 
-    .card-info{
-        padding: 10px;
+    .info-text-container,.misc-info-content{
+        font-size: 1.25em;
     }
 }
 
@@ -716,4 +784,42 @@ footer{
         height: 40px;
         margin-top: 5px;
     }
+
+    .navbar{
+        font-size: 1.75em;
+        height: 60px;
+    }
+    
+    .navbar-brand, .navbar-item{
+        height: 60px;
+    }
+    
+    #navbar-icon{
+        width: 65px;
+        margin: auto;
+    }
+
+    .navbar-item{
+        line-height: 60px;
+    }
+
+    .brand-text{
+        height: 60px;
+        width: 100%;
+        margin: auto;
+    }
+
+    #navbar-title{
+        font-size: 1em;
+        line-height: 60px;
+        text-align: center;
+    }
+
+    #search-nav input{
+        width: 400px;
+        height: 30px;
+        font-size: .75em;
+    }
+
+    
 }
