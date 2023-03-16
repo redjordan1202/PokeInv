@@ -2,18 +2,18 @@
 {% block content %}
 {% csrf_token %}
 
-        <div class="search-results">
-            {% for card in cards reversed %}
-            <div class="result">
-                <a href="{% url 'cards:CardView' card.id %}">
-                    <img src="{{card.images.large}}" class="result-image">
-                </a>
-            </div>
-            {% endfor %}
-        </div>
+<div class="search-results">
+    {% for card in cards reversed %}
+    <div class="result">
+        <a href="{% url 'cards:CardView' card.id %}">
+            <img src="{{card.images.large}}" class="result-image">
+        </a>
+    </div>
+    {% endfor %}
+</div>
 
-        <script>
-            document.title = "Search: {{search}} | Pokemon TCG Inventory"
-        </script>
+<script>
+    document.title = "Search: {{search}} | Pokemon TCG Inventory"
+</script>
 
 {% endblock %}
