@@ -30,9 +30,13 @@ class Card(models.Model):
     tcgplayer = models.JSONField(default=None, null=True)
     types = models.JSONField(default=None, null=True)
     weaknesses = models.JSONField(default=None, null=True)
+    date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         if self.name:
             return self.name + " | " + self.id
         else:
             return "None"
+        
+    class meta:
+        ordering = ['sets.name']

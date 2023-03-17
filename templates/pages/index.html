@@ -2,13 +2,15 @@
 {% block content %}
 {% csrf_token %}
 
-    <div class="description">
-        <h2 class="descrip-title">Pokemon TCG Inventory</h2>
-        <p class="descrip-text">Search for a card to start adding to your collection</p>
+    <div class="index-page">
+        <div class="description">
+            <h2 class="descrip-title">Pokemon TCG Inventory</h2>
+            <p class="descrip-text">Search for a card to start adding to your collection</p>
+        </div>
+        <form action="{% url 'pages:results' %}" method="get" id="main-search">
+            <input type="text" placeholder="Search..." name="search">
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
     </div>
-    <form action="{% url 'pages:results' %}" method="get" id="main-search">
-        <input type="text" placeholder="Search..." name="search">
-        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-    </form>
 
 {% endblock %}

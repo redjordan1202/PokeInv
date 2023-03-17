@@ -10,8 +10,11 @@ def Index(request):
 def Results(request):
     context = {}
     if request.GET['search'] != '':
-        query = 'name:\"%s\"' % request.GET['search']
-        cards = Card.where(q=query, orderBy='+set.releaseDate')
+        try:
+            cards = Card.where(q=request.GET['search'], orderBy='+set.releaseDate')
+        except:
+            query = 'name:\"%s\"' % request.GET['search']
+            cards = Card.where(q=query, orderBy='+set.releaseDate')
         context = {
             'cards' : cards,
             'search' : request.GET['search']

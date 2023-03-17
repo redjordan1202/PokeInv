@@ -25,6 +25,20 @@ def CardView(request, card_id):
 
 
 
+def ImportCards(request):
+    all_cards = card.all()
+    cards_imported = 0
+    for x in all_cards:
+        if Card.objects.filter(id=x.id):
+            continue
+        else:
+            parseCardInfo(x)
+            cards_imported = cards_imported + 1
+
+    return HttpResponse('Import Complete | %i sets imported' % cards_imported)
+    
+
+
 
 
 
@@ -243,7 +257,6 @@ def parseCardInfo(card):
         }
         i = 1
         for x in card.types:
-            print(x)
             types["type%i" % i] = x
             i = i + 1
         new_card.types = types

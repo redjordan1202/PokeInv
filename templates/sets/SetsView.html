@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+{% csrf_token %}
+{% load static %}
+
+<div class="index-page">
+    <h2 class="page-title">Set List</h2>
+
+    <hr class="separator title-separator">
+
+    {% for key, series in series.items %}
+        <div class="series">
+        <h3 class="series-name">{{key}}</h3>
+        <hr class="separator">
+        <div class="set-view">
+            {% for set in series %}
+            <div class="set">
+                <a href="#" class="set-link">
+                    <div class="set-image-container">
+                        <img src="{{set.images.logo}}" class="set-logo">
+                    </div>
+                    <hr class="separator">
+                    <div class="set-info-container">
+                        <img src="{{set.images.symbol}}" class="set-symbol">
+                        <p class="set-name">{{set.name}}</p>
+                    </div>
+                    <div class="set-info-container">
+                        <span class="release-date">Released {{set.releaseDate}}</span>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    document.title = "Sets | Pokemon TCG Inventory"
+</script>
+
+{% endblock %}
