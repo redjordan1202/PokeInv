@@ -12,27 +12,20 @@ def Index(request):
 def Results(request):
     context = {}
     if ":" in request.GET['search']:
-        print(request.GET['search'])
-        search = request.GET['search']
-        print(search)
-        s = search.partition(":")
-        print(s)
+        s = request.GET['search'].partition(":")
 
         match s[0]:
             case "set":
-                print("set")
-                print(s[2])
                 queryset = Card.objects.filter(sets__name__icontains='%s'%s[2])
             case "set_exact":
-                print("set")
-                print(s[2])
                 queryset = Card.objects.filter(sets__name='%s'%s[2])
+        search = s[2]
     else:
-        print(request.GET['search'])
-        queryset = None
+        queryset = Card.objects.filter(name__icontains=request.GET['search'])
+        search = request.GET['search']
 
     context = {
         'cards' : queryset,
-        'search' : request.GET['search']
+        'search' : search
     }
     return render(request, 'pages/results.html', context)
