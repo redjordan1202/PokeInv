@@ -109,22 +109,6 @@
         <hr class="separator">
         {% endif %}
 
-        {% if card.rules %}
-        <div class="info-section">
-            <div class="section-header">
-                <h2 class="section-title">Rules</h2>
-            </div>
-            {% for key, rule in card.rules.items %}
-            {% if rule %}
-            <div class="info-text-container">
-                <p class="info-text">{{rule}}</p>
-            </div>
-            {% endif %}
-            {% endfor %}
-        </div>
-        <hr class="separator">
-        {% endif %}
-
         {% if card.abilities.type %}
         <div class="info-section">
             <div class="section-header">
@@ -149,6 +133,22 @@
                 <h3 class="ancient-trait-name">{{card.ancientTrait.name}}</h3>
                 <p class="info-text">{{card.ancientTrait.text}}</p>
             </div>
+        </div>
+        <hr class="separator">
+        {% endif %}
+
+        {% if card.rules %}
+        <div class="info-section">
+            <div class="section-header">
+                <h2 class="section-title">Rules</h2>
+            </div>
+            {% for key, rule in card.rules.items %}
+            {% if rule %}
+            <div class="info-text-container">
+                <p class="info-text">{{rule}}</p>
+            </div>
+            {% endif %}
+            {% endfor %}
         </div>
         <hr class="separator">
         {% endif %}

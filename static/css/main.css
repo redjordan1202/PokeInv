@@ -524,14 +524,14 @@ footer{
 }
 
 .ability-name{
-    text-align: start;
+    text-align: end;
     padding: 0 10px;
     margin: 0;
     font-size: 1.25em;
 }
 
 .ancient-trait-name{
-    text-align: start;
+    text-align: end;
     padding: 0 10px;
     margin: 0;
     font-size: 1.25em;
