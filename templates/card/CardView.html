@@ -272,6 +272,12 @@
     document.title = "{{card.name}} | {{card.sets.name}}"
 </script>
 
+{% if card.supertype == "Pokémon" %}
+    <script>
+        document.getElementById("favicon").href = "{% static 'imgs/'|add:card.types.type1|add:'.png' %}"
+    </script>
+{% endif %}
+
 {% endblock %}
 
 
