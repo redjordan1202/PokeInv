@@ -49,7 +49,6 @@ html{
     color: white;
     background-color: var(--foreground);
     display: block;
-    border-radius: 0px 0px 12px 12px;
 }
 
 .navbar-brand{
@@ -149,8 +148,8 @@ html{
 }
 
 .navbar-expand{
-    width: 100%;
-    margin: 0;
+    width: 200px;
+    margin: 0px;
     padding: 0;
     background-color: var(--foreground);
     display: none;
@@ -158,8 +157,11 @@ html{
 
 .expanded{
     display: inline-block !important;
-    position: relative;
+    position: absolute;
+    top: 40px;
+    right: 0;
     z-index: 1;
+    border-radius: 0px 0px 12px 12px;
 }
 
 .expand-item{
@@ -173,7 +175,7 @@ html{
 }
 
 .expand-item a{
-    height: 100%;
+    display: block;
     line-height: 36px;
     text-align: center;
 }
@@ -203,14 +205,9 @@ html{
     border-color: var(--search-border);
     border-width: 1px;
     height: 1em;
-    width: 100vw;
+    width: 100%;
     height: 22px;
     padding: 0px 5px;
-}
-
-#search-expand button:hover{
-    cursor: pointer;
-    background-color: var(--search-hover);
 }
 
 .index-page{
@@ -338,7 +335,7 @@ footer{
 .search-results{
     color: white;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
     grid-gap: 10px;
     padding: 5px;
 }
@@ -716,6 +713,10 @@ footer{
 }
 
 @media screen and (min-width: 480px) {
+    .search-results{
+        grid-template-columns: auto auto;
+    }
+
     .collapse-sm{
         display: block;
     }
@@ -806,6 +807,41 @@ footer{
 }
 
 @media screen and (min-width: 1025px){
+    .navbar{
+        font-size: 1.75em;
+        height: 60px;
+    }
+    
+    .navbar-brand, .navbar-item{
+        height: 60px;
+    }
+
+    #navbar-icon{
+        width: 65px;
+        margin: auto;
+    }
+
+    .navbar-item{
+        line-height: 60px;
+    }
+
+    .brand-text{
+        height: 60px;
+        width: 100%;
+        margin: auto;
+    }
+
+    #navbar-title{
+        font-size: 1em;
+        line-height: 60px;
+        text-align: center;
+    }
+
+    #search-nav input{
+        width: 400px;
+        height: 30px;
+        font-size: .75em;
+    }
     
     .search-results{
         grid-template-columns: auto auto auto auto;
@@ -942,41 +978,7 @@ footer{
         margin-top: 5px;
     }
 
-    .navbar{
-        font-size: 1.75em;
-        height: 60px;
-    }
     
-    .navbar-brand, .navbar-item{
-        height: 60px;
-    }
-
-    #navbar-icon{
-        width: 65px;
-        margin: auto;
-    }
-
-    .navbar-item{
-        line-height: 60px;
-    }
-
-    .brand-text{
-        height: 60px;
-        width: 100%;
-        margin: auto;
-    }
-
-    #navbar-title{
-        font-size: 1em;
-        line-height: 60px;
-        text-align: center;
-    }
-
-    #search-nav input{
-        width: 400px;
-        height: 30px;
-        font-size: .75em;
-    }
 }
 
 @media screen and (min-width: 1600px){
