@@ -24,7 +24,7 @@ class Card(models.Model):
     resistances = models.JSONField(default=None, null=True)
     retreatCost = models.JSONField(default=None, null=True)
     rules = models.JSONField(default=None, null=True)
-    sets = models.JSONField(default=None, null=True)
+    sets = models.ForeignKey('sets.Card_Set', on_delete=models.CASCADE)
     subtypes = models.JSONField(default=None, null=True)
     supertype = models.JSONField(default=None, null=True)
     tcgplayer = models.JSONField(default=None, null=True)
