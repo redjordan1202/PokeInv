@@ -2,6 +2,13 @@
     --background:rgb(66, 68, 82);
     --foreground: rgb(43, 46, 71);
     --foreground-hover: rgb(86, 93, 160);
+    --search-background: rgb(21, 22, 30);
+    --search-border: rgb(91, 94, 110);
+    --search-hover: rgb(157, 159, 170);
+    --link-text-color: rgb(88, 121, 199);
+    --check-mark-color: rgb(17, 153, 17);
+    --x-mark-color: rgb(214, 3, 3);
+    --link-hover: rgb(187, 134, 252);
 }
 
 ::placeholder{
@@ -106,10 +113,10 @@ html{
 }
 
 #search-nav input{
-    background-color: rgb(21, 22, 30);
+    background-color: var(--search-background);
     color: white;
     border-radius: 25px;
-    border-color: rgb(91, 94, 110);
+    border-color: var(--search-border);
     border-width: 1px;
     height: 1em;
     width: 170px;
@@ -118,10 +125,10 @@ html{
 }
 
 #search-nav button{
-    background-color: rgb(21, 22, 30);
+    background-color: var(--search-background);
     color: white;
     border-radius: 12px;
-    border-color: rgb(91, 94, 110);
+    border-color: var(--search-border);
     border-width: 1px;
     height: 26px;
     width: 26px;
@@ -175,10 +182,10 @@ html{
 }
 
 #search-expand input{
-    background-color: rgb(21, 22, 30);
+    background-color: var(--search-background);
     color: white;
     border-radius: 12px;
-    border-color: rgb(91, 94, 110);
+    border-color: var(--search-border);
     border-width: 1px;
     height: 1em;
     width: 100vw;
@@ -188,7 +195,7 @@ html{
 
 #search-expand button:hover{
     cursor: pointer;
-    background-color: rgb(157, 159, 170);
+    background-color: var(--search-hover);
 }
 
 .index-page{
@@ -234,20 +241,20 @@ html{
 
 #main-search input{
     width: 75%;
-    background-color: rgb(21, 22, 30);
+    background-color: var(--search-background);
     color: white;
     border-radius: 12px;
-    border-color: rgb(91, 94, 110);
+    border-color: var(--search-border);
     border-width: 1px;
     padding: 0px 20px;
     height: 22px;
 }
 
 #main-search button{
-    background-color: rgb(21, 22, 30);
+    background-color: var(--search-background);
     color: white;
     border-radius: 12px;
-    border-color: rgb(91, 94, 110);
+    border-color: var(--search-border);
     border-width: 1px;
     height: 26px;
     width: 26px;
@@ -258,7 +265,7 @@ html{
 
 #main-search button:hover{
     cursor: pointer;
-    background-color: rgb(157, 159, 170);
+    background-color: var(--search-hover);
 }
 
 .description{
@@ -290,7 +297,7 @@ footer{
 
 .api-footer a {
     text-decoration: none;
-    color: rgb(88, 121, 199);
+    color: var(--link-text-color);
     cursor: pointer;
 }
 
@@ -311,7 +318,7 @@ footer{
 
 .expand-button:hover{
     cursor: pointer;
-    color: rgb(187, 134, 252);
+    color: var(--link-hover);
 }
 
 .search-results{
@@ -597,11 +604,11 @@ footer{
 }
 
 .green-check{
-    color: green;
+    color: var(--check-mark-color);
 }
 
 .red-x{
-    color: red;
+    color: var(--x-mark-color);
 }
 
 .set-view{
