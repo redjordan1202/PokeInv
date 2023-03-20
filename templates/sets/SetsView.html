@@ -15,7 +15,7 @@
         <div class="set-view">
             {% for set in series %}
             <div class="set">
-                <a href="#" class="set-link">
+                <a href="{% url 'pages:results'%}?search=set_exact:{{set.name| urlencode }}" class="set-link">
                     <div class="set-image-container">
                         <img src="{{set.images.logo}}" class="set-logo">
                     </div>

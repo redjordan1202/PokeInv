@@ -4,6 +4,7 @@ from pokemontcgsdk import *
 from pokemontcgsdk import Card as card
 from decouple import config
 from .models import Card
+from sets.models import Card_Set
 import json
 
 
@@ -29,13 +30,14 @@ def ImportCards(request):
     all_cards = card.all()
     cards_imported = 0
     for x in all_cards:
+        print(x.set.name + " | " + x.id)
         if Card.objects.filter(id=x.id):
             continue
         else:
             parseCardInfo(x)
             cards_imported = cards_imported + 1
 
-    return HttpResponse('Import Complete | %i sets imported' % cards_imported)
+    return HttpResponse('Import Complete | %i cards imported' % cards_imported)
     
 
 
@@ -171,12 +173,8 @@ def parseCardInfo(card):
         rules = {}
     new_card.rules = rules
 
-    cardSet = {
-        "id" : card.set.id,
-        "name" : card.set.name,
-        "symbol" : card.set.images.symbol,
-    }
-    new_card.sets = cardSet
+    card_set = Card_Set.objects.get(id=card.set.id)
+    new_card.sets = card_set
 
     if card.subtypes:
         subtypes = {}
