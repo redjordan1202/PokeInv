@@ -448,6 +448,7 @@ footer{
 .card-info{
     color: white;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 .section-header{
@@ -703,7 +704,9 @@ footer{
     }
 
     .content{
-        padding: 0px 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 1.5rem;
     }
 
     .misc-info{
@@ -752,7 +755,9 @@ footer{
     }
 
     .content{
-        padding: 0px 35px;
+        padding-left: 35px;
+        padding-right: 35px;
+        padding-bottom: 1.5rem;
         margin-top: 10px;
     }
 

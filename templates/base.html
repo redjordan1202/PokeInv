@@ -8,7 +8,6 @@
     <link rel="stylesheet" type='text/css' href="{% static 'css\main.css' %}">
 </head>
 
-
 <body>
 
     <div class="container">
@@ -41,12 +40,8 @@
                         <input type="text" placeholder="Search..." name="search">
                     </form>
                 </div>
-                
-                
-                
-                
-                
             </div>
+
             <div class="navbar-expand" id="navbar-expand">
                 <div class="expand-item" id="search-expand">
                     <form action="{% url 'pages:results' %}" method="get">
@@ -70,10 +65,11 @@
             {% endblock %}
         </div>
 
-    
-
+        <footer>
+            <span class="api-footer">All Information provided by <a href="https://pokemontcg.io/"> Pokemon TCG API</a></span>
+            <span class="created-footer">Pokemon TCG Inventory by Jordan Del Pilar</span>
+        </footer>
     </div>
-    
 
     <script>
         function expandNav() {
@@ -94,9 +90,4 @@
 
     <script src="https://kit.fontawesome.com/da38f2ab5d.js" crossorigin="anonymous"></script>
 </body>
-
-<!-- <footer>
-    <span class="api-footer">All Information provided by <a href="https://pokemontcg.io/"> Pokemon TCG API</a></span>
-    <span class="created-footer">Pokemon TCG Inventory by Jordan Del Pilar</span>
-</footer> -->
 
