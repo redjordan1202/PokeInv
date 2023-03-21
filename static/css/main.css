@@ -804,6 +804,27 @@ footer{
         grid-template-columns: auto auto;
         column-gap: 10px;
     }
+
+    footer{
+        font-size: .80em;
+    }
+
+    #main-search input{
+        font-size: 2em;
+        height: 50px;
+        border-radius: 25px;
+    }
+
+    #main-search button{
+        height: 48px;
+        width: 48px;
+        border-radius: 25px;
+        font-size: 1.75em;
+    }
+
+    .description{
+        font-size: 2em;
+    }
 }
 
 @media screen and (min-width: 1025px){
@@ -978,6 +999,9 @@ footer{
         margin-top: 5px;
     }
 
+    footer{
+        font-size: 1em;
+    }
     
 }
 
