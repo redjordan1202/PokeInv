@@ -1,8 +1,6 @@
 from django.db import models
 
-
 # Create your models here.
-
 
 class Card(models.Model):
     id = models.CharField(max_length=512, primary_key=True)

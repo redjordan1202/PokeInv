@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'cards',
     'pages',
     'sets',
+    'collection',
 ]
 
 MIDDLEWARE = [
