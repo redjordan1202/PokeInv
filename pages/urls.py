@@ -5,5 +5,5 @@ app_name='pages'
 
 urlpatterns=[
     path('', views.Index, name="index"),
-    path('results/', views.Results, name='results')
+    path('results/', views.Results, name='results'),
 ]

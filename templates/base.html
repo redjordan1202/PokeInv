@@ -34,12 +34,34 @@
                     <button class="expand-button" onclick="expandNav()"><i class="fa-solid fa-bars" id="expand-button-icon"></i></button>
                 </div>
                 <div class="navbar-item collapse-md" id="sign-in">
-                    <a href="#" class="nav-link"><i class="fa-solid fa-user"></i></i></i></a>
+                    <a href="#" class="nav-link" onclick="expandAccount();return false;"><i class="fa-solid fa-user" id="main-account-icon"></i></a>
                 </div>
                 <div class="navbar-item collapse-sm" id="search-nav">
                     <form  action="{% url 'pages:results' %}" method="get">
                         <input type="text" placeholder="Search..." name="search">
                     </form>
+                </div>
+                <div class="account-mini"  id="main-account-options">
+                    <div class="account-options-expanded">
+                        {% if user.is_authenticated %}
+                        <div class="expand-item" id="expanded-username">
+                            <p class="expanded-username">{{ user.username }}</p>
+                        </div>
+                        <div class="expand-item">
+                            <a href="#" class="nav-link">My Account</a>
+                        </div>
+                        <div class="expand-item">
+                            <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                        </div>
+                        {% else %}
+                        <div class="expand-item">
+                            <a href="{% url 'login' %}" class="nav-link">Login</a>
+                        </div>
+                        <div class="expand-item">
+                            <a href="{% url 'accounts:signup' %}" class="nav-link">Signup</a>
+                        </div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
 
@@ -56,7 +78,24 @@
                     <a href="#" class="nav-link">About</a>
                 </div>
                 <div class="expand-item">
-                    <a href="#" class="nav-link"><i class="fa-solid fa-user"></i></i></i></a>
+                    <button class="account-options-button" id="account-options-button" onclick="expandAccountOptions()" class="nav-link"><i class="fa-solid fa-user" id="account-icon"></i></button>
+                </div>
+                <div class="account-options" id="account-options">
+                    {% if user.is_authenticated %}
+                    <div class="expand-item">
+                        <a href="#" class="nav-link">My Account</a>
+                    </div>
+                    <div class="expand-item">
+                        <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                    </div>
+                    {% else %}
+                    <div class="expand-item">
+                        <a href="{% url 'login' %}" class="nav-link">Login</a>
+                    </div>
+                    <div class="expand-item">
+                        <a href="{% url 'accounts:signup' %}" class="nav-link">Signup</a>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </nav>
@@ -80,10 +119,35 @@
                 expand.classList.remove("expanded")
                 icon.classList.remove("fa-xmark")
                 icon.classList.add("fa-bars")
-            }
-            else {
+            } else {
                 expand.classList.add("expanded")
                 icon.classList.remove("fa-bars")
+                icon.classList.add("fa-xmark")
+            }
+        }
+
+        function expandAccountOptions() {
+            const accountOptions = document.getElementById("account-options")
+            const accountButton = document.getElementById("account-options-button")
+            if(accountOptions.classList.contains("account-options-expanded")){
+                accountOptions.classList.remove("account-options-expanded")
+                accountButton.innerHTML = "<i class='fa-solid fa-user' id='account-icon'></i>"
+            } else {
+                accountOptions.classList.add("account-options-expanded")
+                accountButton.innerHTML = "{{ user.username }} <i class='fa-solid fa-xmark' style='float: right; padding-right: 15px;' id='account-icon'></i>"
+            }
+        }
+
+        function expandAccount() {
+            const expand = document.getElementById("main-account-options")
+            const icon = document.getElementById("main-account-icon")
+            if(expand.classList.contains("account-mini-expanded")) {
+                expand.classList.remove("account-mini-expanded")
+                icon.classList.remove("fa-xmark")
+                icon.classList.add("fa-user")
+            } else {
+                expand.classList.add("account-mini-expanded")
+                icon.classList.remove("fa-user")
                 icon.classList.add("fa-xmark")
             }
         }

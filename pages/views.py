@@ -1,7 +1,9 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
+from django.contrib.auth import login, authenticate
 from pokemontcgsdk import *
 from pokemontcgsdk import Card as card
 from cards.models import Card
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 
@@ -29,3 +31,4 @@ def Results(request):
         'search' : search
     }
     return render(request, 'pages/results.html', context)
+

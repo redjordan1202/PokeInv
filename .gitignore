@@ -135,6 +135,7 @@ todo.md
 
 #Logs created from testing
 log.txt
+sent_emails/
 
 #venv config file
 

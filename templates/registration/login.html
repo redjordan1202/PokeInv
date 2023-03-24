@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+    <div class="form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="login-header">
+                <h2 class="login-header-text">Login</h2>
+            </div>
+            <div class="login-container">
+                <label for="{{ form.username.id_for_label }}">Username</label>
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+
+            <div class="login-container">
+                <label for="{{ form.password.id_for_label }}">Password</label>        
+                {{ form.password }}
+                {{ form.password.errors }}
+                
+            </div>
+
+            <button type="submit" class="login-button">Login</button>
+            <p><a href="{% url 'password_reset' %}" class="reset-link">Forgot Password?</a></p>
+            <p>No account? <a href="{% url 'accounts:signup' %}" class="reset-link">Create Account</a></p>
+        </form>
+        {{ form.field_errors }}
+        {{ form.non_field_errors }}
+    </div>
+
+{% endblock %}
