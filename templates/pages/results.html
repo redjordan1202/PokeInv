@@ -1,19 +1,150 @@
 {% extends 'base.html' %}
 {% block content %}
-{% csrf_token %}
+
 
 <div class="search-results">
     {% for card in cards reversed %}
-    <div class="result">
-        <a href="{% url 'cards:CardView' card.id %}">
+    <div class="result" id="{{card.id}}">
+        <a class="result-link" id="{{card.id}}-link">
             <img src="{{card.images.large}}" class="result-image">
         </a>
+        <div class="search-collection-box">
+            <div class="close-search-collection">
+                <i class='fa-solid fa-xmark'></i>
+            </div>
+            <div class="search-collection-box-section">
+                <p class="search-collection-text">{{card.name}}</p>
+                <p class="search-collection-text">{{card.sets.name}}</p>
+                <hr class="separator">
+            </div>
+            <div class="search-collection-box-section">
+                <button class="search-collection-button"><a href="{% url 'cards:CardView' card.id %}">View Card Info</a></button>
+            </div>
+            <div class="search-collection-counter search-collection-box-section">
+                <button class="counter-button down-button" id="{{card.id}}-down-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                <form method="post" class="search-collection-form" id="{{card.id}}-form">
+                    {% csrf_token %}
+                    {{ form.card }}
+                    {{ form.quantity }}
+                </form>
+                <button class="counter-button up-button" id="{{card.id}}-up-btn"><i class="fa-solid fa-chevron-up"></i></button>
+            </div>
+            <div class="search-collection-box-section">
+                <button type="submit" form="{{card.id}}-form" class="search-collection-button" id="{{card.id}}-collection-add">Add to Collection</button>
+            </div>
+        </div>
     </div>
+    <script>
+        document.getElementById("{{card.id}}").addEventListener("click", function() {
+            document.getElementById("{{card.id}}-form").children[1].value="{{card.id}}";
+            console.log(document.getElementById("{{card.id}}-form").children[1].value)
+            console.log("{{card.name}} | Finished")
+            return;
+        })
+
+        function collectionBoxExpand() {
+            console.log(this)
+            const openCollectionBoxes = document.getElementsByClassName('search-collection-box-expanded');
+            console.log(openCollectionBoxes)
+            let len = openCollectionBoxes.length;
+            if(len > 0){
+                for(var i = 0; i < len; i++){
+                    openCollectionBoxes[i].classList.remove('search-collection-box-expanded');
+                }
+            }
+            const result = this.parentNode
+            const collectionBox = result.children[1];
+            if(collectionBox.classList.contains('search-collection-box-expanded')){
+                collectionBox.classList.remove('search-collection-box-expanded');
+            } else {
+                collectionBox.classList.add('search-collection-box-expanded');
+            }
+            return false;
+        }
+
+        document.getElementById("{{card.id}}-link").addEventListener('click', collectionBoxExpand)
+
+        function changeQty() {
+            console.log(document.getElementById("{{card.id}}-form").children[2])
+            const input = document.getElementById("{{card.id}}-form").children[2]
+            console.log(input)
+            if (this.classList.contains("up-button")) {
+                if (input.value >= 99) {
+                    return
+                } else {
+                    input.value++
+                }
+                return
+            }
+
+            if (this.classList.contains("down-button")) {
+                if (input.value <= 0) {
+                    return
+                } else {
+                    input.value--
+                }
+                return
+            }
+        }
+
+        document.getElementById("{{card.id}}-down-btn").addEventListener('click', changeQty)
+        document.getElementById("{{card.id}}-up-btn").addEventListener('click', changeQty)
+
+        $("#{{card.id}}-form").submit(function (e) {
+            e.preventDefault();
+            var serializedData = $(this).serialize();
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'collection:ajaxAdd' %}",
+                data: serializedData,
+                success: function (response) {
+                    console.log("added {{card.name}} to CollectionItems");
+                    $("#{{card.id}}-form").trigger('reset');
+                    if(JSON.parse(response["authenticated"]) === false) {
+                        window.location.href = "{% url 'login' %}?next={{request.build_absolute_uri}}";
+                    }
+                },
+                error: function (response) {
+                    console.log("{{card.name}} failed");
+                }
+            })
+        })
+
+
+
+
+
+
+    </script>
     {% endfor %}
 </div>
 
+
 <script>
     document.title = "Search: {{search}} | Pokemon TCG Inventory"
+
+    function collectionBoxExpand() {
+        console.log(this)
+        const openCollectionBoxes = document.getElementsByClassName('search-collection-box-expanded');
+        console.log(openCollectionBoxes)
+        let len = openCollectionBoxes.length;
+        if(len > 0){
+            for(var i = 0; i < len; i++){
+                openCollectionBoxes[i].classList.remove('search-collection-box-expanded');
+            }
+        }
+        const result = this.parentNode
+        const collectionBox = result.children[1];
+        if(collectionBox.classList.contains('search-collection-box-expanded')){
+            collectionBox.classList.remove('search-collection-box-expanded');
+        } else {
+            collectionBox.classList.add('search-collection-box-expanded');
+        }
+    }
+
+    
+
 </script>
 
 {% endblock %}

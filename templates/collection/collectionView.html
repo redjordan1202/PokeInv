@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+{% csrf_token %}
+
+{% for item in items%}
+<div class="search-results">
+    <div class="result">
+        <a href="{% url 'cards:CardView' item.card.id %}" class="result-link">
+            <img src="{{item.card.images.large}}">
+        </a>
+    </div>
+</div>
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -4,6 +4,7 @@ from pokemontcgsdk import *
 from pokemontcgsdk import Card as card
 from cards.models import Card
 from django.contrib.auth.forms import UserCreationForm
+from collection.forms import CollectionItemForm
 
 # Create your views here.
 
@@ -26,9 +27,12 @@ def Results(request):
         queryset = Card.objects.filter(name__icontains=request.GET['search'])
         search = request.GET['search']
 
+    form = CollectionItemForm()
+
     context = {
         'cards' : queryset,
-        'search' : search
+        'search' : search,
+        'form' : form,
     }
     return render(request, 'pages/results.html', context)
 

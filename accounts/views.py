@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from .forms import SignUpForm 
+from collection.models import Collection
 # Create your views here.
 
 
@@ -14,6 +15,7 @@ def signup(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
+            collection = Collection(user=user).save()
             return redirect('pages:index')
     else:
         form = SignUpForm()
