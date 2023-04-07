@@ -2,24 +2,14 @@
 {% block content %}
 {% csrf_token %}
 
-{% for item in items%}
 <div class="search-results">
+{% for item in items%}
     <div class="result">
         <a href="{% url 'cards:CardView' item.card.id %}" class="result-link">
-            <img src="{{item.card.images.large}}">
+            <img src="{{item.card.images.large}}" class="result-image">
         </a>
     </div>
-</div>
 {% endfor %}
-
-
-
-
-
-
-
-
-
-
+</div>
 
 {% endblock %}
