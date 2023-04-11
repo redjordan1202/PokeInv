@@ -13,9 +13,10 @@
                 <i class='fa-solid fa-xmark'></i>
             </div>
             <div class="search-collection-box-section">
-                <p class="search-collection-text">{{card.name}}</p>
-                <p class="search-collection-text">{{card.sets.name}}</p>
-                <hr class="separator">
+                <div class="collection-text">
+                    <p class="search-collection-text">{{card.name}}</p>
+                    <p class="search-collection-text search-collection-setname">{{card.sets.name}}</p>
+                </div>
             </div>
             <div class="search-collection-box-section">
                 <button class="search-collection-button"><a href="{% url 'cards:CardView' card.id %}">View Card Info</a></button>
