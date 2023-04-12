@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
 <div class="search-results">
-    {% for card in cards reversed %}
+    {% for card in cards %}
     <div class="result" id="{{card.id}}">
         <a class="result-link" id="{{card.id}}-link">
             <img src="{{card.images.large}}" class="result-image">
@@ -111,22 +110,26 @@
                 }
             })
         })
-
-
-
-
-
-
     </script>
     {% endfor %}
 </div>
-
 
 <script>
     document.title = "Search: {{search}} | Pokemon TCG Inventory"
 
     function collectionBoxExpand() {
-        console.log(this)
+        closeCollectionBoxes()
+        const result = this.parentNode
+        const collectionBox = result.children[1];
+        if(collectionBox.classList.contains('search-collection-box-expanded')){
+            collectionBox.classList.remove('search-collection-box-expanded');
+        } else {
+            collectionBox.classList.add('search-collection-box-expanded fade-in');
+            setTimeout(function(){collectionBox.classList.remove("fade-in");}, 4000)
+        }
+    }
+
+    function closeCollectionBoxes(){
         const openCollectionBoxes = document.getElementsByClassName('search-collection-box-expanded');
         console.log(openCollectionBoxes)
         let len = openCollectionBoxes.length;
@@ -135,17 +138,12 @@
                 openCollectionBoxes[i].classList.remove('search-collection-box-expanded');
             }
         }
-        const result = this.parentNode
-        const collectionBox = result.children[1];
-        if(collectionBox.classList.contains('search-collection-box-expanded')){
-            collectionBox.classList.remove('search-collection-box-expanded');
-        } else {
-            collectionBox.classList.add('search-collection-box-expanded');
-        }
     }
 
-    
-
+    const closeBtns = document.getElementsByClassName("close-search-collection")
+    for(i = 0; i < closeBtns.length; i++) {
+        closeBtns[i].addEventListener('click', closeCollectionBoxes)
+    }
 </script>
 
 {% endblock %}
