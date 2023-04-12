@@ -17,7 +17,7 @@ class Card(models.Model):
     regulationMark = models.CharField(max_length=5, default=None, null=True)
     name = models.CharField(max_length=512)
     nationalPokedexNumbers = models.JSONField(default=None, null=True)
-    number = models.CharField(max_length=16, default=None, null=True)
+    number = models.SmallIntegerField(max_length=16, default=None, null=True)
     rarity = models.CharField(max_length=512, default=None, null=True)
     resistances = models.JSONField(default=None, null=True)
     retreatCost = models.JSONField(default=None, null=True)

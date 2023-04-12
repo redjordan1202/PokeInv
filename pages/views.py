@@ -19,15 +19,17 @@ def Results(request):
 
         match s[0]:
             case "set":
-                queryset = Card.objects.filter(sets__name__icontains='%s'%s[2])
+                queryset = Card.objects.filter(sets__name__icontains='%s'%s[2]).order_by("number")
             case "set_exact":
-                queryset = Card.objects.filter(sets__name='%s'%s[2])
+                queryset = Card.objects.filter(sets__name='%s'%s[2]).order_by("number")
         search = s[2]
     else:
-        queryset = Card.objects.filter(name__icontains=request.GET['search'])
+        queryset = Card.objects.filter(name__icontains=request.GET['search']).order_by("number")
         search = request.GET['search']
 
     form = CollectionItemForm()
+    for item in queryset:
+        print(item.number)
 
     context = {
         'cards' : queryset,
